@@ -13,6 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', routes)
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Headers', 'Authorization');
+  next();
+});
+
+
 // app.get('/github_login', (req, res, next) => {
 //   const code = req.query.code
 //

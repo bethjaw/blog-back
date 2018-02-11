@@ -2,7 +2,7 @@ const db = require('./connect')
 
 
 function getBlogPost(id){
-  return db('blogpost').select('*').where('user_id', id)
+  return db('blogpost').select('*').where('user_id', id).innerJoin('user', 'user_id', 'user.id')
 }
 
 function getGroupBlog(id){

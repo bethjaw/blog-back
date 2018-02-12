@@ -24,6 +24,13 @@ router.get('/groupblog/:id', (req, res) => {
       })
 })
 
+router.get('/singleblog/:id', (req, res) => {
+  let blogid = req.params.id
+  query.getBlogById(blogid)
+    .then((blog) => {
+      res.json(blog)
+    })
+})
 
 router.post('/newblog/:id', (req, res) => {
   let id = req.params.id

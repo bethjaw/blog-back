@@ -1,5 +1,8 @@
 const db = require('./connect')
 
+function getAllBlogs(){
+  return db('blogpost').select('*')
+}
 
 function getBlogPost(id){
   return db('blogpost').select('*').where('user_id', id)
@@ -22,6 +25,7 @@ function postBlog(id, content){
 
 
 module.exports = {
+  getAllBlogs,
   getBlogPost,
   getGroupBlog,
   getBlogById,

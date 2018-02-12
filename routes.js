@@ -2,6 +2,14 @@ const express = require('express')
 const router = express.Router()
 const query = require('./db/query')
 
+
+router.get('/allblogs', (req, res) => {
+  query.getAllBlogs()
+    .then((blog) => {
+      res.json(blog)
+    })
+})
+
 router.get('/blogpost/:id', (req, res) => {
   let id = req.params.id
   query.getBlogPost(id)

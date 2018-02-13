@@ -40,6 +40,8 @@ router.get('/singleblog/:id', (req, res) => {
     })
 })
 
+// CREATE
+
 router.post('/newblog/:id', (req, res) => {
   let id = req.params.id
   let content = req.body
@@ -47,6 +49,17 @@ router.post('/newblog/:id', (req, res) => {
     .then((blog) => {
       res.json(blog)
   })
+})
+
+// UPDATE
+
+router.patch('/update', (req, res) => {
+  let id = req.body.id
+  let update = req.body
+  query.updateBlog(id, update)
+    .then((update) => {
+      res.json(update)
+    })
 })
 
 module.exports = router

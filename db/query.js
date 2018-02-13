@@ -17,10 +17,16 @@ function getBlogById(blogid){
   return db('blogpost').select('*').where('id', blogid)
 }
 
+// CREATE
+
 function postBlog(id, content){
   return db('blogpost').insert(content).where('user_id', id).innerJoin('user', 'user_id', 'user.id')
 }
 
+// UPDATE
+function updateBlog(id, update){
+  return db('blogpost').update(update).where('id', id).returning('*')
+}
 
 
 
@@ -30,4 +36,5 @@ module.exports = {
   getGroupBlog,
   getBlogById,
   postBlog,
+  updateBlog,
 }

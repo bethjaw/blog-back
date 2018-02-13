@@ -6,6 +6,9 @@ exports.up = function(knex, Promise) {
       table.string('title')
       table.text('content')
       table.integer('user_id')
+      table.string('selected')
+      table.string('read')
+      table.string('starred')
     })
   ])
 };

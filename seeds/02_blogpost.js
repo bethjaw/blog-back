@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
         {
           // id: 2,
           title: 'Agile Values',
-          content: 'The 4 agile values: 1. Individuals and interactions over processes and tools - This is about valuing the members of your team.  Communication should be open and continuous.  2. Working software over comprehensive documentation - The client values the actual work that is done.  Agile documents in user stories which give the developer enough to get started. 3. Customer collaboration over contract negotiation - Having a customer that is engaged throughout the development process makes it easier for the developer to give them what they want. 4. Responding to change over following a plan. Plans change! And we should always be planning.  Allows for priorities to shift as needed.',
+          content: 'There are 4 agile values: 1. Individuals and interactions over processes and tools - This is about valuing the members of your team.  Communication should be open and continuous. 2. Working software over comprehensive documentation - The client values the actual work that is done.  Agile documents in user stories which give the developer enough to get started. 3. Customer collaboration over contract negotiation - Having a customer that is engaged throughout the development process makes it easier for the developer to give them what they want. 4. Responding to change over following a plan. Plans change! And we should always be planning.  Allows for priorities to shift as needed.',
           user_id: 2,
           selected: false,
           read: false,

@@ -5,25 +5,15 @@ var request = require('request');
 const querystring = require('query-string');
 var port = process.env.PORT || 3001
 const routes = require('./routes')
+const cors = require('cors')
 
 require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: false }))
  app.use(bodyParser.json())
+app.use(cors('*'))
 
 app.use('/', routes)
-
-// app.use(function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', req.headers.origin);
-//   res.header('Access-Control-Allow-Headers', 'Authorization');
-//   next();
-// });
-
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://bloghomework.herokuapp.com/');
-  res.header('Access-Control-Allow-Headers', 'Authorization');
-  next();
-});
 
 
 

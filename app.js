@@ -11,7 +11,9 @@ require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: false }))
  app.use(bodyParser.json())
+
 app.use(cors('*'))
+app.options('*', cors())
 
 app.use('/', routes)
 

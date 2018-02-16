@@ -47,6 +47,14 @@ router.get('/user/:id', (req, res) => {
     })
 })
 
+router.get('/usergroup/:id', (req, res) => {
+  let userid = req.params.id
+  query.getGroups(userid)
+    .then((groups) => {
+      res.json(groups)
+    })
+})
+
 // CREATE
 
 router.post('/newblog/:id', (req, res) => {

@@ -20,6 +20,10 @@ function getUser(id){
     return db('user').select('*').where('id', id)
 }
 
+function getGroups(userid){
+  return db('user_group').select('*').where('user_id', userid).innerJoin('group', 'group_id', 'group.id')
+}
+
 // CREATE
 
 function postBlog(id, content){
@@ -39,6 +43,7 @@ module.exports = {
   getGroupBlog,
   getBlogById,
   getUser,
+  getGroups,
   postBlog,
   updateBlog,
 }

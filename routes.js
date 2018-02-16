@@ -28,7 +28,6 @@ router.get('/groupblog/:id', (req, res) => {
             .then((content) => {
               res.json(content)
             })
-        // res.json(blog)
       })
 })
 
@@ -37,6 +36,14 @@ router.get('/singleblog/:id', (req, res) => {
   query.getBlogById(blogid)
     .then((blog) => {
       res.json(blog)
+    })
+})
+
+router.get('/user/:id', (req, res) => {
+  let id = req.params.id
+  query.getUser(id)
+    .then((user) => {
+      res.json(user)
     })
 })
 

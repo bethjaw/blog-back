@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
       table.text('content')
       table.integer('user_id')
       table.string('selected')
-      table.string('read')
+      table.boolean('read')
       table.string('starred')
     })
   ])

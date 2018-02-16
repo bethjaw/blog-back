@@ -6,7 +6,6 @@ function getAllBlogs(){
 
 function getBlogPost(id){
   return db('blogpost').select('*').where('user_id', id)
-  // .innerJoin('user', 'user_id', 'user.id')
 }
 
 function getGroupBlog(id){
@@ -15,6 +14,10 @@ function getGroupBlog(id){
 
 function getBlogById(blogid){
   return db('blogpost').select('*').where('id', blogid)
+}
+
+function getUser(id){
+    return db('user').select('*').where('id', id)
 }
 
 // CREATE
@@ -35,6 +38,7 @@ module.exports = {
   getBlogPost,
   getGroupBlog,
   getBlogById,
+  getUser,
   postBlog,
   updateBlog,
 }

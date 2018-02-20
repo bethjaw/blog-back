@@ -2,15 +2,18 @@ const express = require('express')
 const router = express.Router()
 const query = require('./db/query')
 
-
-router.get('/allblogs', (req, res) => {
+// allblogs
+// retrieves list of blogs
+router.get('/blogs', (req, res) => {
   query.getAllBlogs()
     .then((blog) => {
       res.json(blog)
     })
 })
 
-router.get('/blogpost/:id', (req, res) => {
+// blogpost/:id
+// retrieves blogs for specific user
+router.get('/user/:id/blogs', (req, res) => {
   let id = req.params.id
   query.getBlogPost(id)
     .then((blog) => {
@@ -18,7 +21,8 @@ router.get('/blogpost/:id', (req, res) => {
     })
 })
 
-router.get('/groupblog/:id', (req, res) => {
+// groupblog/:id
+router.get('/user/:id/group', (req, res) => {
   let id = req.params.id
   console.log(req.params)
     query.getGroupBlog(id)
@@ -31,7 +35,8 @@ router.get('/groupblog/:id', (req, res) => {
       })
 })
 
-router.get('/singleblog/:id', (req, res) => {
+// singleblog/:id
+router.get('/user/:id/blog', (req, res) => {
   let blogid = req.params.id
   query.getBlogById(blogid)
     .then((blog) => {
@@ -39,6 +44,7 @@ router.get('/singleblog/:id', (req, res) => {
     })
 })
 
+// user/:id
 router.get('/user/:id', (req, res) => {
   let id = req.params.id
   query.getUser(id)
@@ -47,7 +53,8 @@ router.get('/user/:id', (req, res) => {
     })
 })
 
-router.get('/usergroup/:id', (req, res) => {
+//  usergroup/:id
+router.get('/user/:id/usergroup', (req, res) => {
   let userid = req.params.id
   query.getGroups(userid)
     .then((groups) => {
@@ -56,8 +63,8 @@ router.get('/usergroup/:id', (req, res) => {
 })
 
 // CREATE
-
-router.post('/newblog/:id', (req, res) => {
+// newblog/:id
+router.post('/user/:id/blog', (req, res) => {
   let id = req.params.id
   let content = req.body
   query.postBlog(id, content)
@@ -67,8 +74,8 @@ router.post('/newblog/:id', (req, res) => {
 })
 
 // UPDATE
-
-router.patch('/update', (req, res) => {
+// /update
+router.patch('/user/:id/blog', (req, res) => {
   let id = req.body.id
   let update = req.body
   query.updateBlog(id, update)

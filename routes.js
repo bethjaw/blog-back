@@ -65,7 +65,7 @@ router.post('/blogs', (req, res) => {
 })
 
 // UPDATE
-router.patch('/blogs/:id', (req, res) => {
+router.patch('/blogs', (req, res) => {
   let id = req.body.id
   let update = req.body
   query.updateBlog(id, update)

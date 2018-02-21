@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const query = require('./db/query')
 
-// allblogs
-// retrieves list of blogs
+
 router.get('/blogs', (req, res) => {
   query.getAllBlogs()
     .then((blog) => {
@@ -11,9 +10,7 @@ router.get('/blogs', (req, res) => {
     })
 })
 
-// blogpost/:id
-// retrieves blogs for specific user
-router.get('/user/:id/blogs', (req, res) => {
+router.get('/users/:id/blogs', (req, res) => {
   let id = req.params.id
   query.getBlogPost(id)
     .then((blog) => {
@@ -21,10 +18,8 @@ router.get('/user/:id/blogs', (req, res) => {
     })
 })
 
-// groupblog/:id
-router.get('/user/:id/group', (req, res) => {
+router.get('/users/:id/group', (req, res) => {
   let id = req.params.id
-  console.log(req.params)
     query.getGroupBlog(id)
       .then((blog) => {
         let blogid = blog[0].blog_id
@@ -35,8 +30,7 @@ router.get('/user/:id/group', (req, res) => {
       })
 })
 
-// singleblog/:id
-router.get('/user/:id/blog', (req, res) => {
+router.get('/blog/:id', (req, res) => {
   let blogid = req.params.id
   query.getBlogById(blogid)
     .then((blog) => {
@@ -44,8 +38,7 @@ router.get('/user/:id/blog', (req, res) => {
     })
 })
 
-// user/:id
-router.get('/user/:id', (req, res) => {
+router.get('/users/:id', (req, res) => {
   let id = req.params.id
   query.getUser(id)
     .then((user) => {
@@ -53,8 +46,7 @@ router.get('/user/:id', (req, res) => {
     })
 })
 
-//  usergroup/:id
-router.get('/user/:id/usergroup', (req, res) => {
+router.get('/users/:id/usergroup', (req, res) => {
   let userid = req.params.id
   query.getGroups(userid)
     .then((groups) => {
@@ -63,8 +55,7 @@ router.get('/user/:id/usergroup', (req, res) => {
 })
 
 // CREATE
-// newblog/:id
-router.post('/user/:id/blog', (req, res) => {
+router.post('/blogs', (req, res) => {
   let id = req.params.id
   let content = req.body
   query.postBlog(id, content)
@@ -74,8 +65,7 @@ router.post('/user/:id/blog', (req, res) => {
 })
 
 // UPDATE
-// /update
-router.patch('/blog', (req, res) => {
+router.patch('/blogs/:id', (req, res) => {
   let id = req.body.id
   let update = req.body
   query.updateBlog(id, update)
